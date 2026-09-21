@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shrimp Cultivation in Bangladesh — Review Paper</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:      #2B6CB0;
+    --blue-mid:  #3182CE;
+    --blue-lt:   #BEE3F8;
+    --blue-pale: #EBF8FF;
+    --panel:     #ffffff;
+    --text:      #1A202C;
+    --muted:     #4A5568;
+    --border:    #CBD5E0;
+    --bg:        #F7FAFC;
+    --red:       #C53030;
+    --green:     #276749;
+    --accent:    #2B6CB0;
+    --white:     #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 1rem;
+  }
+
+  /* ── BANNER ── */
+  .banner {
+    background: linear-gradient(135deg, #2B6CB0 0%, #4299E1 100%);
+    color: var(--white);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 36px 36px;
+    z-index: 1;
+  }
+  .banner-inner {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .banner .eyebrow {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: #BEE3F8;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .banner h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .banner h1 em { font-style: italic; color: #BEE3F8; }
+  .banner .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2rem;
+  }
+  .banner .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+  }
+  .btn-paper {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.7rem 1.8rem;
+    background: white;
+    color: var(--blue);
+    font-size: 0.83rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-paper:hover { background: #EBF8FF; }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2.5rem 1rem 2rem 1.5rem;
+    background: #EBF8FF;
+    border-right: 1px solid var(--blue-lt);
+  }
+  .sidebar-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--blue-mid);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .sidebar nav a {
+    display: block;
+    font-size: 0.79rem;
+    font-weight: 400;
+    color: #4A6FA5;
+    text-decoration: none;
+    padding: 0.45rem 0.65rem;
+    border-radius: 4px;
+    margin-bottom: 0.1rem;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .sidebar nav a:hover,
+  .sidebar nav a.active {
+    color: var(--blue);
+    background: #BEE3F8;
+    border-left-color: var(--blue);
+  }
+
+  /* ── MAIN ── */
+  .main {
+    padding: 2.5rem 2.5rem 5rem;
+    min-width: 0;
+    background: var(--bg);
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem 2.2rem;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 2px solid var(--blue-lt);
+  }
+  .section h3 {
+    font-size: 0.87rem;
+    font-weight: 600;
+    color: var(--blue-mid);
+    margin: 1.4rem 0 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .section p {
+    margin-bottom: 0.9rem;
+    color: #2D3748;
+    font-size: 0.94rem;
+    font-weight: 300;
+    line-height: 1.78;
+  }
+
+  /* ── ABSTRACT BOX ── */
+  .abstract-box {
+    background: var(--blue-pale);
+    border: 1px solid var(--blue-lt);
+    color: #2C5282;
+    padding: 1.5rem 1.8rem;
+    border-radius: 6px;
+    font-size: 0.93rem;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .abstract-box strong {
+    display: block;
+    font-size: 0.67rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+
+  /* ── KEYWORDS ── */
+  .keywords { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1rem; }
+  .keywords span {
+    font-size: 0.73rem;
+    font-weight: 500;
+    background: var(--blue-pale);
+    color: var(--blue);
+    padding: 0.22rem 0.65rem;
+    border-radius: 3px;
+    border: 1px solid var(--blue-lt);
+  }
+
+  /* ── STAT STRIP ── */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--blue-lt);
+    border: 1px solid var(--blue-lt);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .stat-cell { background: #EBF8FF; padding: 1.2rem 1rem; text-align: center; }
+  .stat-cell .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue);
+    display: block;
+    line-height: 1.1;
+  }
+  .stat-cell .label { font-size: 0.67rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* ── FINDING ── */
+  .finding {
+    border-left: 3px solid var(--blue-mid);
+    padding: 0.8rem 1rem 0.8rem 1.2rem;
+    background: var(--blue-pale);
+    margin: 1rem 0;
+    font-size: 0.92rem;
+    font-weight: 300;
+    border-radius: 0 4px 4px 0;
+  }
+  .finding strong {
+    display: block;
+    font-size: 0.67rem;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+  }
+
+  /* ── CHART LABELS ── */
+  .chart-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .chart-source { font-size: 0.67rem; color: #A0AEC0; margin-top: 0.3rem; }
+
+  /* ── TABLE ── */
+  .stake-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin: 1.2rem 0; }
+  .stake-table th {
+    background: var(--blue);
+    color: white;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    padding: 0.65rem 0.9rem;
+    text-align: left;
+  }
+  .stake-table td {
+    padding: 0.65rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  .stake-table tr:last-child td { border-bottom: none; }
+  .stake-table tr:nth-child(even) td { background: #F7FAFC; }
+  .badge { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 3px; }
+  .badge-win  { background: #C6F6D5; color: #22543D; }
+  .badge-lose { background: #FED7D7; color: #742A2A; }
+  .badge-both { background: #FEFCBF; color: #744210; }
+
+  /* ── REC LIST ── */
+  .rec-list { list-style: none; margin: 0.8rem 0; }
+  .rec-list li {
+    position: relative;
+    padding-left: 1.3rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+  .rec-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.6em;
+    width: 6px; height: 6px;
+    background: var(--blue-mid);
+    border-radius: 50%;
+  }
+
+  /* ── SOLUTION GRID ── */
+  .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin: 1.2rem 0; }
+  .sol-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--green);
+    padding: 1rem 1.1rem;
+    border-radius: 0 0 5px 5px;
+  }
+  .sol-card h4 { font-size: 0.82rem; font-weight: 600; color: var(--blue); margin-bottom: 0.45rem; }
+  .sol-card p { font-size: 0.82rem; color: var(--muted); margin: 0; line-height: 1.55; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--blue);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.75rem;
+  }
+  .footer a { color: var(--blue-lt); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; padding: 1.2rem 1.5rem; }
+    .sidebar nav { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .sidebar nav a { border-left: none; }
+    .main { padding: 1.5rem 1rem 3rem; }
+    .stat-strip { grid-template-columns: 1fr; }
+    .solution-grid { grid-template-columns: 1fr; }
+    .section { padding: 1.4rem 1.2rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="banner">
+  <div class="banner-inner">
+    <p class="eyebrow">ENVS4004 · Global Climate Change · Fall 2021 · Asian University for Women</p>
+    <h1>Shrimp Cultivation in Bangladesh:<br><em>Adaptation or Maladaptation?</em></h1>
+    <p class="subtitle">A Review Paper on Aquaculture, Coastal Ecology, and Sustainable Development</p>
+    <div class="meta">
+      <span>Nahian Ibnat Anan — Bachelor of Economics</span>
+      <span>Afla Musharrat — Bachelor of Environmental Sciences</span>
+    </div>
+    <a class="btn-paper" href="https://github.com/NahianIbnat-2000/ReviewPaper/blob/master/Review%20Paper_Shrimp%20Cultivation.pdf" target="_blank" rel="noopener">
+      Read the Full Paper (PDF)
+    </a>
+  </div>
+</header>
+
+<div class="page-wrap">
+  <aside class="sidebar">
+    <p class="sidebar-label">Contents</p>
+    <nav>
+      <a href="#abstract">Abstract</a>
+      <a href="#context">Background</a>
+      <a href="#advantages">Economic Case</a>
+      <a href="#problems">Problems</a>
+      <a href="#stakeholders">Stakeholders</a>
+      <a href="#solutions">Sustainable Paths</a>
+      <a href="#recommendations">Recommendations</a>
+      <a href="#conclusion">Conclusion</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <section class="section" id="abstract">
+      <h2>Abstract</h2>
+      <div class="abstract-box">
+        <strong>Summary</strong>
+        Shrimp farming has grown into Bangladesh's second-largest export industry, generating over $445 million annually and employing more than two million people. Yet this growth has come without adequate planning or regulation. This paper reviews existing literature to assess whether shrimp cultivation functions as a genuine climate adaptation strategy or as a form of maladaptation — and identifies pathways toward sustainable aquaculture through Integrated Coastal Zone Management (ICZM), rain harvesting, mangrove restoration, and new crop and species varieties.
+      </div>
+      <div class="keywords">
+        <span>Maladaptation</span><span>Aquaculture</span><span>Shrimp Farming</span>
+        <span>Sustainability</span><span>ICZM</span><span>Bangladesh</span>
+      </div>
+    </section>
+
+    <section class="section" id="context">
+      <h2>Background &amp; Scale</h2>
+      <p>Since the mid-1980s, shrimp has been one of Bangladesh's most important export commodities. Favorable agro-climatic conditions in the coastal southwest, combined with pressure from international institutions like the World Bank and the Asian Development Bank, drove a dramatic expansion of shrimp aquaculture across the country.</p>
+      <div class="stat-strip">
+        <div class="stat-cell">
+          <span class="num">244,000 ha</span>
+          <span class="label">Total aquaculture area by 2014<br>(up from 20,000 ha in 1980)</span>
+        </div>
+        <div class="stat-cell">
+          <span class="num">75,274 t</span>
+          <span class="label">Annual shrimp output in 2014–15</span>
+        </div>
+        <div class="stat-cell">
+          <span class="num">$445M+</span>
+          <span class="label">Annual foreign exchange earnings</span>
+        </div>
+      </div>
+      <p>This expansion was driven by structural adjustment policies tied to trade liberalization, and the high profit potential of shrimp farming attracted investors ranging from individual smallholders to multinational corporations.</p>
+
+      <div style="margin:1.6rem 0 0.4rem;">
+        <p class="chart-label">Shrimp Aquaculture Area Growth (hectares)</p>
+        <svg viewBox="0 0 620 215" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;display:block;">
+          <line x1="80" y1="20" x2="80" y2="170" stroke="#CBD5E0" stroke-width="1"/>
+          <line x1="80" y1="170" x2="600" y2="170" stroke="#CBD5E0" stroke-width="1"/>
+          <line x1="80" y1="120" x2="600" y2="120" stroke="#E2E8F0" stroke-width="0.8" stroke-dasharray="4,3"/>
+          <line x1="80" y1="70"  x2="600" y2="70"  stroke="#E2E8F0" stroke-width="0.8" stroke-dasharray="4,3"/>
+          <line x1="80" y1="20"  x2="600" y2="20"  stroke="#E2E8F0" stroke-width="0.8" stroke-dasharray="4,3"/>
+          <text x="74" y="174" font-family="DM Sans,sans-serif" font-size="10" fill="#A0AEC0" text-anchor="end">0</text>
+          <text x="74" y="124" font-family="DM Sans,sans-serif" font-size="10" fill="#A0AEC0" text-anchor="end">75k</text>
+          <text x="74" y="74"  font-family="DM Sans,sans-serif" font-size="10" fill="#A0AEC0" text-anchor="end">150k</text>
+          <text x="74" y="24"  font-family="DM Sans,sans-serif" font-size="10" fill="#A0AEC0" text-anchor="end">244k</text>
+          <rect x="100" y="157.7" width="50" height="12.3" fill="#90CDF4" rx="2"/>
+          <text x="125" y="185" font-family="DM Sans,sans-serif" font-size="9" fill="#A0AEC0" text-anchor="middle">1980</text>
+          <rect x="190" y="133.1" width="50" height="36.9" fill="#63B3ED" rx="2"/>
+          <text x="215" y="185" font-family="DM Sans,sans-serif" font-size="9" fill="#A0AEC0" text-anchor="middle">1990</text>
+          <rect x="280" y="83.9"  width="50" height="86.1"  fill="#4299E1" rx="2"/>
+          <text x="305" y="185" font-family="DM Sans,sans-serif" font-size="9" fill="#A0AEC0" text-anchor="middle">2000</text>
+          <rect x="370" y="62.6"  width="50" height="107.4" fill="#3182CE" rx="2"/>
+          <text x="395" y="185" font-family="DM Sans,sans-serif" font-size="9" fill="#A0AEC0" text-anchor="middle">2005</text>
+          <rect x="460" y="47.1"  width="50" height="122.9" fill="#2B6CB0" rx="2"/>
+          <text x="485" y="185" font-family="DM Sans,sans-serif" font-size="9" fill="#A0AEC0" text-anchor="middle">2010</text>
+          <rect x="540" y="20"    width="50" height="150"   fill="#C53030" rx="2"/>
+          <text x="565" y="185" font-family="DM Sans,sans-serif" font-size="9" fill="#A0AEC0" text-anchor="middle">2014</text>
+          <text x="125" y="154" font-family="DM Sans,sans-serif" font-size="8.5" fill="#2B6CB0" text-anchor="middle" font-weight="600">20k</text>
+          <text x="215" y="130" font-family="DM Sans,sans-serif" font-size="8.5" fill="#2B6CB0" text-anchor="middle" font-weight="600">60k</text>
+          <text x="305" y="80"  font-family="DM Sans,sans-serif" font-size="8.5" fill="#2B6CB0" text-anchor="middle" font-weight="600">140k</text>
+          <text x="395" y="59"  font-family="DM Sans,sans-serif" font-size="8.5" fill="#2B6CB0" text-anchor="middle" font-weight="600">175k</text>
+          <text x="485" y="44"  font-family="DM Sans,sans-serif" font-size="8.5" fill="#2B6CB0" text-anchor="middle" font-weight="600">200k</text>
+          <text x="565" y="17"  font-family="DM Sans,sans-serif" font-size="8.5" fill="#9B2C2C" text-anchor="middle" font-weight="600">244k</text>
+          <rect x="82"  y="200" width="10" height="10" fill="#63B3ED" rx="1"/>
+          <text x="96"  y="209" font-family="DM Sans,sans-serif" font-size="9" fill="#718096">Early growth</text>
+          <rect x="185" y="200" width="10" height="10" fill="#2B6CB0" rx="1"/>
+          <text x="199" y="209" font-family="DM Sans,sans-serif" font-size="9" fill="#718096">Rapid expansion</text>
+          <rect x="310" y="200" width="10" height="10" fill="#C53030" rx="1"/>
+          <text x="324" y="209" font-family="DM Sans,sans-serif" font-size="9" fill="#718096">Unsustainable peak</text>
+        </svg>
+        <p class="chart-source">Source: Ahmed et al., 2017; Afroz &amp; Alam, 2013</p>
+      </div>
+    </section>
+
+    <section class="section" id="advantages">
+      <h2>The Economic Case for Shrimp Farming</h2>
+      <p>The economic rationale for expanding shrimp farming was not unfounded. Shrimp aquaculture created a wide range of livelihood options for coastal communities — in growing, processing, selling, and exporting. For small farmers initially facing salt intrusion on their rice paddy fields, switching to shrimp ponds offered a practical short-term income strategy.</p>
+      <div class="finding">
+        <strong>Key Point</strong>
+        Shrimp is Bangladesh's second-largest export earner after garments, and it was promoted as a pro-poor growth mechanism by national and international policy bodies.
+      </div>
+      <p>At the macro level, shrimp farming has generated significant foreign exchange and contributed to GDP growth. The government and wealthier landowners captured the largest share of this benefit — a pattern this paper critically examines.</p>
+    </section>
+
+    <section class="section" id="problems">
+      <h2>Why It Is Maladaptation</h2>
+      <p>Despite short-term economic gains, unregulated shrimp farming has produced severe, often irreversible environmental and social consequences that meet the definition of maladaptation — an action that reduces long-term adaptive capacity.</p>
+
+      <h3>Salt Intrusion &amp; Soil Degradation</h3>
+      <p>Shrimp ponds require saline water as an input. When land is flooded by saltwater for extended periods, salinity percolates into surrounding soils, destroying their fertility. This prevents free nitrogen fixation, leaving land infertile within one to two years. In Parulia, Satkhira, local varieties of fruits and vegetables have been pushed toward extinction.</p>
+
+      <div style="margin:1.4rem 0 0.4rem;">
+        <p class="chart-label">Crop &amp; Fruit Extinction Risk — Parulia, Satkhira (%)</p>
+        <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;display:block;">
+          <line x1="130" y1="10"  x2="130" y2="195" stroke="#CBD5E0" stroke-width="1"/>
+          <line x1="130" y1="195" x2="520" y2="195" stroke="#CBD5E0" stroke-width="1"/>
+          <line x1="227" y1="10"  x2="227" y2="195" stroke="#E2E8F0" stroke-width="0.8" stroke-dasharray="3,3"/>
+          <line x1="324" y1="10"  x2="324" y2="195" stroke="#E2E8F0" stroke-width="0.8" stroke-dasharray="3,3"/>
+          <line x1="421" y1="10"  x2="421" y2="195" stroke="#E2E8F0" stroke-width="0.8" stroke-dasharray="3,3"/>
+          <line x1="518" y1="10"  x2="518" y2="195" stroke="#E2E8F0" stroke-width="0.8" stroke-dasharray="3,3"/>
+          <text x="227" y="208" font-family="DM Sans,sans-serif" font-size="9" fill="#A0AEC0" text-anchor="middle">4%</text>
+          <text x="324" y="208" font-family="DM Sans,sans-serif" font-size="9" fill="#A0AEC0" text-anchor="middle">8%</text>
+          <text x="421" y="208" font-family="DM Sans,sans-serif" font-size="9" fill="#A0AEC0" text-anchor="middle">10%</text>
+          <text x="518" y="208" font-family="DM Sans,sans-serif" font-size="9" fill="#A0AEC0" text-anchor="middle">12%</text>
+          <rect x="130" y="18"  width="291" height="18" fill="#FC8181" rx="2"/>
+          <text x="124" y="31" font-family="DM Sans,sans-serif" font-size="9.5" fill="#2D3748" text-anchor="end">Mango</text>
+          <text x="425" y="31" font-family="DM Sans,sans-serif" font-size="9" fill="#C53030" font-weight="600">12%</text>
+          <rect x="130" y="44"  width="179" height="18" fill="#FC8181" rx="2" opacity="0.75"/>
+          <text x="124" y="57" font-family="DM Sans,sans-serif" font-size="9.5" fill="#2D3748" text-anchor="end">Blackberry</text>
+          <text x="313" y="57" font-family="DM Sans,sans-serif" font-size="9" fill="#C53030" font-weight="600">7.4%</text>
+          <rect x="130" y="70"  width="158" height="18" fill="#63B3ED" rx="2"/>
+          <text x="124" y="83" font-family="DM Sans,sans-serif" font-size="9.5" fill="#2D3748" text-anchor="end">Spinach</text>
+          <text x="292" y="83" font-family="DM Sans,sans-serif" font-size="9" fill="#2B6CB0" font-weight="600">6.5%</text>
+          <rect x="130" y="96"  width="136" height="18" fill="#63B3ED" rx="2" opacity="0.8"/>
+          <text x="124" y="109" font-family="DM Sans,sans-serif" font-size="9.5" fill="#2D3748" text-anchor="end">Celery</text>
+          <text x="270" y="109" font-family="DM Sans,sans-serif" font-size="9" fill="#2B6CB0" font-weight="600">5.6%</text>
+          <rect x="130" y="122" width="112" height="18" fill="#68D391" rx="2"/>
+          <text x="124" y="135" font-family="DM Sans,sans-serif" font-size="9.5" fill="#2D3748" text-anchor="end">Jujube</text>
+          <text x="246" y="135" font-family="DM Sans,sans-serif" font-size="9" fill="#276749" font-weight="600">4.6%</text>
+          <rect x="130" y="148" width="90"  height="18" fill="#68D391" rx="2" opacity="0.8"/>
+          <text x="124" y="161" font-family="DM Sans,sans-serif" font-size="9.5" fill="#2D3748" text-anchor="end">Guava</text>
+          <text x="224" y="161" font-family="DM Sans,sans-serif" font-size="9" fill="#276749" font-weight="600">3.7%</text>
+          <rect x="130" y="174" width="90"  height="18" fill="#68D391" rx="2" opacity="0.65"/>
+          <text x="124" y="187" font-family="DM Sans,sans-serif" font-size="9.5" fill="#2D3748" text-anchor="end">Banana</text>
+          <text x="224" y="187" font-family="DM Sans,sans-serif" font-size="9" fill="#276749" font-weight="600">3.7%</text>
+          <text x="130" y="222" font-family="DM Sans,sans-serif" font-size="8.5" fill="#A0AEC0">Source: Prodhan et al., 2019</text>
+        </svg>
+      </div>
+
+      <h3>Water Quality Deterioration</h3>
+      <p>Shrimp farms rely heavily on artificial feeds, antibiotics, and disinfectants. These chemicals enter surrounding water systems through pond exchanges, creating toxicity risks for non-target species and human populations. Disease outbreaks driven by antibiotic resistance have caused significant shrimp mortality and yield losses.</p>
+
+      <h3>Mangrove Forest Loss</h3>
+      <div class="finding">
+        <strong>Blue Carbon at Risk</strong>
+        The Sundarbans — the world's largest mangrove forest — stores 160–360 tonnes of blue carbon per hectare, valued at over US$1.87 billion globally. Shrimp farming has destroyed over 1.2 million acres of mangrove, releasing stored carbon and removing a critical natural barrier against storm surges.
+      </div>
+      <p>Mangroves in Bangladesh fell from 452,444 ha in 1976 to 441,455 ha in 2010. The Chakaria Sundarbans in southeast Bangladesh, which held 8,500 acres of mangroves, were entirely cleared for shrimp ponds.</p>
+
+      <div style="margin:1.4rem 0 0.4rem;">
+        <p class="chart-label">Mangrove Cover in Bangladesh (hectares)</p>
+        <svg viewBox="0 0 420 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;">
+          <rect x="30"  y="10"   width="160" height="90"   fill="#48BB78" rx="4"/>
+          <rect x="220" y="22.5" width="160" height="77.5" fill="#FC8181" rx="4"/>
+          <text x="110" y="55"  font-family="DM Sans,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">452,444 ha</text>
+          <text x="110" y="73"  font-family="DM Sans,sans-serif" font-size="9"  fill="rgba(255,255,255,0.8)" text-anchor="middle">1976</text>
+          <text x="300" y="64"  font-family="DM Sans,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">441,455 ha</text>
+          <text x="300" y="82"  font-family="DM Sans,sans-serif" font-size="9"  fill="rgba(255,255,255,0.8)" text-anchor="middle">2010</text>
+          <text x="210" y="120" font-family="DM Sans,sans-serif" font-size="10" fill="#C53030" text-anchor="middle" font-weight="600">▼ 10,989 ha lost over 34 years</text>
+          <text x="210" y="138" font-family="DM Sans,sans-serif" font-size="8.5" fill="#A0AEC0" text-anchor="middle">Source: Ahmed et al., 2017</text>
+        </svg>
+      </div>
+
+      <h3>Socio-economic Inequality</h3>
+      <p>Shrimp farming has widened existing class and gender inequalities. Large landowners expanded their holdings by forcing small farmers — through land disputes and sometimes violence — to sell or lease their plots. Government-owned land previously used for fishing, grazing, and subsistence farming has been converted by powerful shrimp operators, leaving the rural poor more vulnerable than before.</p>
+    </section>
+
+    <section class="section" id="stakeholders">
+      <h2>Who Wins, Who Loses</h2>
+      <p>The distributional consequences of shrimp farming are uneven across stakeholder groups, and critically, even the current "winners" face long-term losses as the industry becomes unsustainable.</p>
+      <table class="stake-table">
+        <thead>
+          <tr><th>Stakeholder</th><th>Short-run</th><th>Long-run</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rich Farmers / Large Landowners</td>
+            <td>High profits from land ownership and shrimp sales</td>
+            <td>Profits fall as land degrades and international investment exits</td>
+            <td><span class="badge badge-both">Mixed</span></td>
+          </tr>
+          <tr>
+            <td>Poor Farmers / Landless Workers</td>
+            <td>Dispossessed, forced into poorly paid labour</td>
+            <td>Continued vulnerability with no alternative livelihood base</td>
+            <td><span class="badge badge-lose">Loser</span></td>
+          </tr>
+          <tr>
+            <td>Bangladesh Government</td>
+            <td>Foreign exchange gains; GDP growth</td>
+            <td>Export competitiveness falls as unsustainable practices draw scrutiny</td>
+            <td><span class="badge badge-both">Mixed</span></td>
+          </tr>
+          <tr>
+            <td>International Bodies / Investors</td>
+            <td>Market access and returns from Bangladesh shrimp exports</td>
+            <td>Increasingly redirecting investment to countries with sustainable practices</td>
+            <td><span class="badge badge-lose">Exiting</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>In economic terms, shrimp farming follows a <em>diminishing marginal product</em> trajectory. Beyond a threshold, each additional hectare converted to shrimp ponds yields a smaller net benefit — and the negative externalities accumulate faster than the gross returns, representing a classic case of market failure requiring policy intervention.</p>
+    </section>
+
+    <section class="section" id="solutions">
+      <h2>Paths Toward Sustainable Shrimp Farming</h2>
+      <p>The literature identifies several practical interventions. The most comprehensive framework is Integrated Coastal Zone Management (ICZM), which provides the institutional architecture to coordinate the others.</p>
+      <h3>Integrated Coastal Zone Management (ICZM)</h3>
+      <p>ICZM addresses three dimensions: policy integration (a specific legal framework for shrimp), functional integration (a single dedicated agency with oversight responsibility), and system integration (genuine participation from local farming communities in policy design and monitoring). Currently no such framework exists — shrimp farming sits awkwardly between fishery and agricultural regulations.</p>
+      <div class="solution-grid">
+        <div class="sol-card">
+          <h4>Rain Harvesting</h4>
+          <p>Provides clean freshwater to coastal communities affected by salinization, reducing dependency on contaminated groundwater.</p>
+        </div>
+        <div class="sol-card">
+          <h4>Mangrove Restoration</h4>
+          <p>Government-led projects can rebuild the Sundarbans' carbon sink function and restore the coastal barrier that shrimp farms depend on.</p>
+        </div>
+        <div class="sol-card">
+          <h4>Saline-Tolerant Crops</h4>
+          <p>High-yield variety (HYV) rice and drought-tolerant seeds allow farmers on degraded land to continue productive agriculture.</p>
+        </div>
+        <div class="sol-card">
+          <h4>Penaeus Vannamei (White Shrimp)</h4>
+          <p>This Pacific species grows faster, tolerates higher stocking density, and withstands a wider salinity range — a more sustainable alternative.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recommendations">
+      <h2>Recommendations</h2>
+      <h3>For Policymakers</h3>
+      <ul class="rec-list">
+        <li>Register all shrimp farms under a national monitoring system to enable safe, traceable production.</li>
+        <li>Mandate environmental screening of all farm inputs — feeds, antibiotics, disinfectants — before use.</li>
+        <li>Implement ICZM as the overarching governance framework for coastal aquaculture.</li>
+        <li>Launch government-funded mangrove restoration programs across affected coastal districts.</li>
+        <li>Subsidize saline-tolerant and drought-tolerant crop seed distribution for displaced smallholder farmers.</li>
+        <li>Promote brackish-water aquaculture diversification — including mangrove crab — to reduce shrimp monoculture risk.</li>
+        <li>Pilot commercial cultivation of Penaeus Vannamei in inland saline zones, following the Indian model.</li>
+      </ul>
+      <h3>For Future Researchers</h3>
+      <ul class="rec-list">
+        <li>Longitudinal studies on soil salinity recovery timelines following shrimp pond decommissioning.</li>
+        <li>Quantitative cost-benefit analysis that prices in environmental externalities (carbon release, biodiversity loss, water contamination).</li>
+        <li>Gender-disaggregated analysis of livelihood impact for women in shrimp-farming communities.</li>
+        <li>Assessment of Penaeus Vannamei viability under Bangladesh's specific coastal hydrology.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="conclusion">
+      <h2>Conclusion</h2>
+      <p>Shrimp farming in Bangladesh began as a pragmatic response to salt intrusion and a route to foreign exchange earnings. In the short run, it delivered on both. But the rapid, unplanned, and unregulated expansion that followed has produced negative externalities — soil degradation, water contamination, mangrove destruction, and growing inequality — that now outweigh the benefits for most of the population affected.</p>
+      <p>The industry's current trajectory is not viable. Countries that develop sustainable aquaculture practices will retain international market access; Bangladesh risks losing its competitive position if it does not reform. ICZM, combined with community participation, mangrove restoration, and investment in alternative species and crops, offers a realistic route to making shrimp farming work for the long term.</p>
+      <div class="finding">
+        <strong>Core Argument</strong>
+        Shrimp cultivation in Bangladesh is currently a maladaptation strategy. It transfers climate risk from rich farmers and the government to the rural poor and the coastal environment. Without structural policy reform, the sector's short-term gains will be erased by long-term environmental and economic costs.
+      </div>
+      <p style="margin-top:1.5rem;">
+        <a class="btn-paper" href="https://github.com/NahianIbnat-2000/ReviewPaper/blob/master/Review%20Paper_Shrimp%20Cultivation.pdf" target="_blank" rel="noopener">
+          Read the Full Paper (PDF)
+        </a>
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  Nahian Ibnat Anan &amp; Afla Musharrat &middot; Asian University for Women &middot; ENVS4004: Global Climate Change &middot; Fall 2021
+  &middot; <a href="https://github.com/NahianIbnat-2000/ReviewPaper/blob/master/Review%20Paper_Shrimp%20Cultivation.pdf" target="_blank" rel="noopener">Full Paper (PDF)</a>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.sidebar nav a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
