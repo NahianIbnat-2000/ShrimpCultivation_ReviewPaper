@@ -29,7 +29,7 @@ The paper reviews the existing research to answer two questions:
 |---|---|
 | `index.html` | The website: a web version of the paper's abstract, findings and recommendations |
 | `explainer.html` | An 11-slide slideshow explaining the paper's main points |
-| Review paper PDF | The full paper |
+| `Review Paper_Shrimp Cultivation.pdf` | The full paper |
 | `README.md` | This file |
 
 ## Viewing the slideshow
