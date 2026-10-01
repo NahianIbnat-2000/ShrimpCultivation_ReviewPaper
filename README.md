@@ -3,7 +3,6 @@
 A review paper written for **ENVS4004: Global Climate Change** at the Asian University for Women, by Nahian Ibnat.
 
 **Website:** https://nahianibnat-2000.github.io/ShrimpCultivation_ReviewPaper/
-**Slideshow explainer:** https://nahianibnat-2000.github.io/ShrimpCultivation_ReviewPaper/explainer.html
 
 ## About the paper
 
