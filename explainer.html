@@ -37,7 +37,8 @@ p{max-width:62ch;color:#DCE6DF}
 .bar label{font-weight:600;color:var(--mist)}
 .bar div{background:rgba(255,255,255,.08);border-radius:4px;height:40px}
 .bar i{display:flex;align-items:center;justify-content:flex-end;padding-right:12px;height:100%;border-radius:4px;font-style:normal;font-weight:600;font-size:.9rem;white-space:nowrap;width:0;transition:width 1s .2s ease}
-.bar.a i{background:var(--mist);color:var(--teal)}.bar.b i{background:linear-gradient(90deg,var(--amber),var(--coral));color:var(--teal)}
+.bar.a i{background:var(--mist);color:var(--teal);position:relative}
+.bar.a u{position:absolute;left:calc(100% + 12px);color:var(--sand);text-decoration:none}.bar.b i{background:linear-gradient(90deg,var(--amber),var(--coral));color:var(--teal)}
 .on .bar.a i{width:14%}.on .bar.b i{width:100%}
 .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:980px}
 .who{border-radius:6px;padding:18px 20px;border:1px solid var(--line);background:rgba(255,255,255,.05)}
@@ -89,7 +90,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--amber-lt);outline-o
   <p class="tag">The boom</p>
   <h2>A huge export market drove rapid growth</h2>
   <div class="bars">
-    <div class="bar a"><label>1980</label><div><i>about 20,000 ha</i></div></div>
+    <div class="bar a"><label>1980</label><div><i><u>about 20,000 ha</u></i></div></div>
     <div class="bar b"><label>2014</label><div><i>about 244,000 ha</i></div></div>
   </div>
   <div class="cards">
