@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shrimp Cultivation in Bangladesh: Slideshow Explainer</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0}
+:root{--teal:#0D3B38;--teal-mid:#175C57;--teal-soft:#1F7068;--sand:#F5EDD6;--amber:#C8860A;--amber-lt:#E8A93A;--coral:#E58B78;--leaf:#8DBF8A;--mist:#8AACAA;--line:rgba(245,237,214,.16)}
+html,body{height:100%}
+body{font:17px/1.65 Inter,system-ui,sans-serif;color:var(--sand);background:var(--teal);overflow:hidden}
+.deck{height:100%;position:relative;background:
+ linear-gradient(rgba(200,134,10,.06) 1px,transparent 1px) 0 0/38px 38px,
+ linear-gradient(90deg,rgba(200,134,10,.06) 1px,transparent 1px) 0 0/38px 38px,
+ radial-gradient(900px 500px at 85% 0%,var(--teal-soft),transparent 70%),var(--teal)}
+.slide{position:absolute;inset:0;padding:clamp(28px,6vw,70px) clamp(20px,8vw,130px) 100px;display:none;flex-direction:column;justify-content:center;overflow-y:auto}
+.slide.on{display:flex;animation:in .45s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tag{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-lt);margin-bottom:14px}
+h1,h2{font-family:Lora,Georgia,serif;font-weight:700;line-height:1.15}
+h1{font-size:clamp(2.1rem,5.6vw,4rem);max-width:17ch}
+h1 em{font-style:italic;font-weight:400;color:#B8C9C7}
+h2{font-size:clamp(1.6rem,3.6vw,2.6rem);max-width:24ch;margin-bottom:.55em}
+p{max-width:62ch;color:#DCE6DF}
+.sub{color:var(--mist);margin-top:1em;font-size:.95rem}
+.rule{width:64px;height:3px;background:var(--amber);margin:22px 0}
+.waves{position:absolute;left:0;right:0;bottom:56px;height:90px;opacity:.55;pointer-events:none}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1040px;margin-top:10px}
+.card{background:rgba(255,255,255,.06);border:1px solid var(--line);border-top:3px solid var(--amber);border-radius:6px;padding:18px 20px}
+.card.g{border-top-color:var(--leaf)}.card.c{border-top-color:var(--coral)}
+.card b{display:block;font-family:Lora,serif;font-size:1.15rem;margin-bottom:4px;color:#fff}
+.card span{color:#C3D5CF;font-size:.93rem;display:block}
+.num{font-family:Lora,serif;font-weight:700;font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1.1;color:var(--amber-lt);display:block;margin-bottom:6px}
+.bars{max-width:760px;margin:6px 0 20px}
+.bar{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:14px;margin:12px 0}
+.bar label{font-weight:600;color:var(--mist)}
+.bar div{background:rgba(255,255,255,.08);border-radius:4px;height:40px}
+.bar i{display:flex;align-items:center;justify-content:flex-end;padding-right:12px;height:100%;border-radius:4px;font-style:normal;font-weight:600;font-size:.9rem;white-space:nowrap;width:0;transition:width 1s .2s ease}
+.bar.a i{background:var(--mist);color:var(--teal)}.bar.b i{background:linear-gradient(90deg,var(--amber),var(--coral));color:var(--teal)}
+.on .bar.a i{width:14%}.on .bar.b i{width:100%}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:980px}
+.who{border-radius:6px;padding:18px 20px;border:1px solid var(--line);background:rgba(255,255,255,.05)}
+.who h3{font-family:Lora,serif;font-size:1.1rem;margin-bottom:10px;color:#fff}
+.chip{display:inline-block;font-size:.76rem;font-weight:600;padding:3px 10px;border-radius:99px;margin:2px 6px 2px 0}
+.chip.w{background:rgba(141,191,138,.18);color:var(--leaf)}.chip.l{background:rgba(229,139,120,.18);color:var(--coral)}
+.verdict{display:inline-block;border:3px solid var(--coral);color:var(--coral);font-family:Lora,serif;font-weight:700;font-size:clamp(2rem,6vw,4rem);padding:6px 28px;border-radius:6px;transform:rotate(-2deg);margin:6px 0 24px;align-self:flex-start}
+.steps{display:flex;flex-direction:column;gap:6px;max-width:700px}
+.steps li{list-style:none;position:relative;padding:12px 16px 12px 46px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:6px}
+.steps li::before{content:"";position:absolute;left:18px;top:19px;width:12px;height:12px;border-radius:50%;background:var(--amber)}
+.back{display:inline-block;margin-top:18px;padding:.7rem 1.6rem;background:var(--amber);color:#fff;border-radius:3px;font-weight:600;text-decoration:none;font-size:.9rem}
+.back:hover{background:#A06B08}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:14px;padding:12px clamp(16px,4vw,48px) calc(12px + env(safe-area-inset-bottom,0px));background:rgba(8,38,36,.92);border-top:1px solid var(--line);backdrop-filter:blur(6px)}
+nav button{background:none;border:1px solid var(--line);color:var(--sand);padding:8px 18px;font:inherit;font-size:.9rem;border-radius:3px;cursor:pointer}
+nav button:hover:not(:disabled){border-color:var(--amber);background:rgba(200,134,10,.15)}
+nav button:disabled{opacity:.35;cursor:default}
+nav .home{color:var(--mist);font-size:.85rem;text-decoration:none}
+.prog{flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.prog div{height:100%;width:0;background:var(--amber);transition:width .3s}
+.count{color:var(--mist);min-width:3.6em;text-align:right;font-size:.88rem}
+button:focus-visible,a:focus-visible{outline:3px solid var(--amber-lt);outline-offset:2px}
+@media (max-width:560px){nav .home{display:none}.bar{grid-template-columns:48px 1fr}}
+@media (prefers-reduced-motion:reduce){.slide.on{animation:none}.bar i,.prog div{transition:none}}
+</style>
+</head>
+<body>
+<main class="deck">
+
+<section class="slide on" aria-label="Title">
+  <p class="tag">ENVS4004 · Global Climate Change · Asian University for Women</p>
+  <h1>Shrimp Cultivation in Bangladesh: <em>Adaptation or Maladaptation?</em></h1>
+  <div class="rule"></div>
+  <p>A slideshow explainer of the review paper by Nahian Ibnat. Use the arrow keys or the buttons below to move through it.</p>
+  <svg class="waves" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 Q150 10 300 40 T600 40 T900 40 T1200 40 V90 H0Z" fill="#175C57"/><path d="M0 62 Q150 36 300 62 T600 62 T900 62 T1200 62 V90 H0Z" fill="#1F7068" opacity=".7"/></svg>
+</section>
+
+<section class="slide" aria-label="The question">
+  <p class="tag">The question</p>
+  <h2>Shrimp earns money. Is it a smart response to a changing coast?</h2>
+  <p>Salt water is moving inland in southwest Bangladesh, and shrimp farming took off to profit from it. The paper asks two things:</p>
+  <div class="cards" style="margin-top:18px">
+    <div class="card"><b>Adaptation or maladaptation?</b><span>Does shrimp cultivation help coastal people cope, or make things worse?</span></div>
+    <div class="card g"><b>Can it be sustainable?</b><span>Is it possible to grow shrimp for export without the damage?</span></div>
+  </div>
+  <p class="sub">Method: peer-reviewed primary research since 2000, found through Google Scholar, SAGE and Cambridge Core.</p>
+</section>
+
+<section class="slide" aria-label="Why it boomed">
+  <p class="tag">The boom</p>
+  <h2>A huge export market drove rapid growth</h2>
+  <div class="bars">
+    <div class="bar a"><label>1980</label><div><i>about 20,000 ha</i></div></div>
+    <div class="bar b"><label>2014</label><div><i>about 244,000 ha</i></div></div>
+  </div>
+  <div class="cards">
+    <div class="card"><span class="num">2 million+</span><span>people work in growing, selling, processing and exporting</span></div>
+    <div class="card"><span class="num">$445M+</span><span>earned each year; the second largest export after garments</span></div>
+    <div class="card"><span class="num">World Bank, ADB</span><span>backed the growth with policy changes and incentives</span></div>
+  </div>
+</section>
+
+<section class="slide" aria-label="Land and water">
+  <p class="tag">The cost</p>
+  <h2>Damage on the land and in the water</h2>
+  <div class="cards">
+    <div class="card c"><b>Salt in the soil</b><span>Long flooding with salt water can leave land infertile within a year or two.</span></div>
+    <div class="card c"><b>Fewer crops and fish</b><span>Local rice gave way to salt-tolerant hybrids. Spinach, mango, guava and koi fish are disappearing in Satkhira.</span></div>
+    <div class="card c"><b>Polluted water</b><span>Feed, antibiotics and chemicals are used without proper dosing knowledge and drain into the environment.</span></div>
+    <div class="card c"><b>Thirsty farming</b><span>About 50 to 60 million litres of water per tonne of shrimp, half of it fresh. Drinking water becomes scarce.</span></div>
+  </div>
+</section>
+
+<section class="slide" aria-label="Mangroves">
+  <p class="tag">The cost</p>
+  <h2>Mangroves are lost, and their carbon with them</h2>
+  <p>The Sundarbans is the world's largest compact mangrove forest. Clearing mangroves for shrimp ponds, as in Chakaria, releases the blue carbon stored in their soil and trees.</p>
+  <div class="cards" style="margin-top:18px">
+    <div class="card g"><span class="num">160 to 360 t/ha</span><span>blue carbon stored in the Sundarbans, depending on plant type and salinity</span></div>
+    <div class="card c"><b>Less protection</b><span>Without mangroves, shrimp farms are exposed to storm surges too.</span></div>
+  </div>
+</section>
+
+<section class="slide" aria-label="Social impact">
+  <p class="tag">The cost</p>
+  <h2>"Good for the rich and bad for the poor"</h2>
+  <p>Shrimp expansion deepened class and gender inequality. Land leased or sold under pressure moved to powerful farmers, and common land used for fishing and grazing was taken over. Land disputes in Satkhira and Khulna turned violent.</p>
+  <p class="sub">The landless and small farmers lost sharecropping and were pushed into poorly paid labour.</p>
+</section>
+
+<section class="slide" aria-label="Winners and losers">
+  <p class="tag">Stakeholders</p>
+  <h2>Who wins, and for how long?</h2>
+  <div class="split">
+    <div class="who"><h3>Rich farmers</h3><span class="chip w">Now: winning</span><span class="chip l">Later: profits fall</span></div>
+    <div class="who"><h3>Government</h3><span class="chip w">Now: export earnings</span><span class="chip l">Later: buyers move away</span></div>
+    <div class="who"><h3>International buyers</h3><span class="chip w">Now: steady supply</span><span class="chip l">Later: pulling back</span></div>
+    <div class="who"><h3>Poor farmers</h3><span class="chip l">Now: losing land</span><span class="chip l">Later: still losing</span></div>
+  </div>
+</section>
+
+<section class="slide" aria-label="Verdict">
+  <p class="tag">The verdict</p>
+  <div class="verdict">Maladaptation</div>
+  <p>Shrimp farming pays today, but the damage to land, water, mangroves and equality is largely irreversible. The cost-benefit analysis shows a success now that is unlikely to last.</p>
+  <p class="sub">The authors note the real problem is unplanned, unregulated farming rather than shrimp itself, and policy can address that.</p>
+</section>
+
+<section class="slide" aria-label="Solutions">
+  <p class="tag">The way forward</p>
+  <h2>A path to sustainable shrimp</h2>
+  <div class="cards">
+    <div class="card g"><b>ICZM (main proposal)</b><span>Integrated Coastal Zone Management: a dedicated shrimp law, one lead agency, and community monitoring.</span></div>
+    <div class="card g"><b>Rain harvesting</b><span>Clean drinking water and salt-free irrigation.</span></div>
+    <div class="card g"><b>Mangrove restoration</b><span>Restores blue carbon storage and storm protection.</span></div>
+    <div class="card g"><b>Salt-tolerant crops</b><span>Saline and drought-tolerant seeds and short-duration rice.</span></div>
+    <div class="card g"><b>New species</b><span>Pacific white shrimp worked on saline land in India and could be tried here.</span></div>
+    <div class="card g"><b>Zoning</b><span>Match shrimp farming to low, medium or high salinity areas.</span></div>
+  </div>
+</section>
+
+<section class="slide" aria-label="Recommendations">
+  <p class="tag">Recommendations</p>
+  <h2>What policymakers should do</h2>
+  <ul class="steps">
+    <li>Register all shrimp farms so they can be monitored.</li>
+    <li>Choose farm inputs that do not harm the environment, and improve health and post-harvest practices.</li>
+    <li>Diversify into other brackish-water species such as mangrove crab.</li>
+    <li>Implement ICZM and launch mangrove restoration projects.</li>
+    <li>Support saline-tolerant and drought-tolerant crop seeds.</li>
+  </ul>
+</section>
+
+<section class="slide" aria-label="Conclusion">
+  <p class="tag">Bottom line</p>
+  <h2>Keep the gains, limit the harm</h2>
+  <p>Shrimp farming grew fast on export demand without enough planning or regulation. With no specific shrimp policy, local people do not back the industry. ICZM offers the clearest way to protect the economic benefits while reducing the social and environmental costs.</p>
+  <div><a class="back" href="./">Back to the full paper</a></div>
+</section>
+
+</main>
+
+<nav aria-label="Slide controls">
+  <a class="home" href="./">Paper home</a>
+  <button id="prev" aria-label="Previous slide">Previous</button>
+  <div class="prog" aria-hidden="true"><div id="bar"></div></div>
+  <span class="count" id="count" aria-live="polite"></span>
+  <button id="next" aria-label="Next slide">Next</button>
+</nav>
+
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('.slide')),i=0,bar=document.getElementById('bar'),count=document.getElementById('count');
+  function show(n){
+    i=Math.max(0,Math.min(s.length-1,n));
+    s.forEach(function(el,k){el.classList.toggle('on',k===i)});
+    bar.style.width=((i+1)/s.length*100)+'%';
+    count.textContent=(i+1)+' / '+s.length;
+    prev.disabled=i===0;next.disabled=i===s.length-1;
+    s[i].scrollTop=0;
+    if(history.replaceState)history.replaceState(null,'','#'+(i+1));
+  }
+  var prev=document.getElementById('prev'),next=document.getElementById('next');
+  prev.onclick=function(){show(i-1)};next.onclick=function(){show(i+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){show(i-1)}
+    else if(e.key==='Home'){show(0)}else if(e.key==='End'){show(s.length-1)}
+  });
+  var x0=null;
+  document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>60)show(d<0?i+1:i-1);x0=null});
+  var h=parseInt(location.hash.slice(1),10);show(h?h-1:0);
+})();
+</script>
+</body>
+</html>
