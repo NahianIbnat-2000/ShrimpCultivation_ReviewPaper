@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,8 +99,6 @@
     transition: background 0.2s;
   }
   .btn-paper:hover { background: #A06B08; }
-  .btn-explainer { background: transparent; border: 1.5px solid var(--amber); color: var(--sand); margin-left: 0.6rem; }
-  .btn-explainer:hover { background: var(--amber); color: var(--white); }
 
   /* LAYOUT */
   .page-wrap {
@@ -378,10 +377,9 @@
     <p class="eyebrow">ENVS4004 · Global Climate Change · Fall 2021 · Asian University for Women</p>
     <h1>Shrimp Cultivation in Bangladesh:<br><em>Adaptation or Maladaptation?</em></h1>
     <p class="subtitle">A Review Paper on Aquaculture, Coastal Ecology, and Sustainable Development</p>
-    <div class="meta">Nahian Ibnat · Bachelor of Economics</div>
+    <div class="meta">Nahian Ibnat Anan · Bachelor of Economics</div>
     <div style="font-family:'Inter',sans-serif;font-size:0.76rem;color:#7A9C9A;margin-top:0.4rem;">Major: Economics &nbsp;·&nbsp; Minor: Environmental Science and Mathematics</div>
     <a class="btn-paper" href="https://github.com/NahianIbnat-2000/ReviewPaper/blob/master/Review%20Paper_Shrimp%20Cultivation.pdf" target="_blank" rel="noopener">Read the Full Paper (PDF)</a>
-    <a class="btn-paper btn-explainer" href="explainer.html">View the Slideshow Explainer</a>
   </div>
 </header>
 
@@ -403,7 +401,6 @@
       <a href="#recommendations">Recommendations</a>
       <a href="#conclusion">Conclusion</a>
       <a href="#questions">Open Questions</a>
-      <a href="explainer.html">Slideshow Explainer</a>
     </nav>
   </aside>
 
@@ -700,9 +697,8 @@
 </div>
 
 <footer class="footer">
-  Nahian Ibnat &middot; Asian University for Women &middot; ENVS4004: Global Climate Change &middot; Fall 2021
+  Nahian Ibnat Anan &middot; Asian University for Women &middot; ENVS4004: Global Climate Change &middot; Fall 2021
   &middot; <a href="https://github.com/NahianIbnat-2000/ReviewPaper/blob/master/Review%20Paper_Shrimp%20Cultivation.pdf" target="_blank" rel="noopener">Full Paper (PDF)</a>
-  &middot; <a href="explainer.html">Slideshow Explainer</a>
 </footer>
 
 <script>
@@ -719,5 +715,397 @@
   }, { rootMargin: '-30% 0px -60% 0px' });
   sections.forEach(s => observer.observe(s));
 </script>
+
+<!-- ===== CHATBOT WIDGET ===== -->
+<style>
+  /* Floating button */
+  #chat-fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--teal-mid);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(13,59,56,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: background 0.2s, transform 0.15s;
+  }
+  #chat-fab:hover { background: var(--teal-soft); transform: scale(1.07); }
+  #chat-fab svg { width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Chat panel */
+  #chat-panel {
+    position: fixed;
+    bottom: 96px;
+    right: 28px;
+    width: 370px;
+    max-width: calc(100vw - 40px);
+    height: 520px;
+    max-height: calc(100vh - 120px);
+    background: var(--sand-lt);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(13,59,56,0.18);
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    overflow: hidden;
+    transform: scale(0.92) translateY(16px);
+    opacity: 0;
+    pointer-events: none;
+    transform-origin: bottom right;
+    transition: transform 0.22s cubic-bezier(.4,0,.2,1), opacity 0.22s;
+  }
+  #chat-panel.open {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Header */
+  .chat-header {
+    background: var(--teal);
+    color: var(--sand);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .chat-header-icon {
+    width: 32px; height: 32px;
+    background: var(--amber);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .chat-header-icon svg { width: 18px; height: 18px; fill: #fff; }
+  .chat-header-text { flex: 1; }
+  .chat-header-text strong { font-family: 'Lora', serif; font-size: 0.95rem; display: block; }
+  .chat-header-text span { font-family: 'Inter', sans-serif; font-size: 0.72rem; opacity: 0.75; }
+  .chat-close {
+    background: none; border: none; color: var(--sand); cursor: pointer; padding: 4px;
+    opacity: 0.8; line-height: 1;
+  }
+  .chat-close:hover { opacity: 1; }
+
+  /* Messages */
+  #chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-behavior: smooth;
+  }
+  .msg {
+    max-width: 88%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .msg.bot {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 3px;
+    align-self: flex-start;
+    color: var(--charcoal);
+  }
+  .msg.user {
+    background: var(--teal-mid);
+    color: #fff;
+    border-bottom-right-radius: 3px;
+    align-self: flex-end;
+  }
+  .msg a { color: var(--amber); }
+
+  /* Suggestions */
+  .suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .sug-btn {
+    background: none;
+    border: 1px solid var(--teal-mid);
+    color: var(--teal-mid);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .sug-btn:hover { background: var(--teal-mid); color: #fff; }
+
+  /* Input area */
+  .chat-input-row {
+    border-top: 1px solid var(--border);
+    padding: 10px 12px;
+    display: flex;
+    gap: 8px;
+    background: #fff;
+    flex-shrink: 0;
+  }
+  #chat-input {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    background: var(--sand-lt);
+  }
+  #chat-input:focus { border-color: var(--teal-mid); }
+  #chat-send {
+    background: var(--teal-mid);
+    border: none;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.15s;
+  }
+  #chat-send:hover { background: var(--teal); }
+</style>
+
+<!-- FAB button -->
+<button id="chat-fab" aria-label="Ask a question about the paper" title="Ask about this paper">
+  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+
+<!-- Chat panel -->
+<div id="chat-panel" role="dialog" aria-label="Paper Q&A">
+  <div class="chat-header">
+    <div class="chat-header-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    </div>
+    <div class="chat-header-text">
+      <strong>Paper Q&amp;A</strong>
+      <span>Ask anything about this review paper</span>
+    </div>
+    <button class="chat-close" id="chat-close-btn" aria-label="Close chat">✕</button>
+  </div>
+  <div id="chat-messages">
+    <!-- Welcome message injected by JS -->
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Type a question…" autocomplete="off" />
+    <button id="chat-send">Send</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  // ── Knowledge base ──────────────────────────────────────────────
+  const KB = [
+    {
+      keys: ['what is this paper','about this paper','summary','overview','main point','what does this paper'],
+      answer: 'This paper, written by Nahian Ibnat for ENVS4004 (Global Climate Change, Fall 2021) at Asian University for Women, examines whether shrimp cultivation in Bangladesh is an adaptation strategy or a maladaptation to climate change. It finds that while shrimp farming generates significant short-term economic benefits, its unregulated expansion causes severe long-term environmental and social harm.'
+    },
+    {
+      keys: ['research question','question the paper','aims','objective','purpose'],
+      answer: 'The paper investigates two questions: (1) Is shrimp cultivation an adaptation or maladaptation strategy for Bangladesh? (2) Is sustainable shrimp export cultivation possible? The paper concludes shrimp cultivation is currently a maladaptation strategy, but sustainable alternatives exist.'
+    },
+    {
+      keys: ['methodology','method','how was the research','sources used','literature review','google scholar'],
+      answer: 'The paper uses a secondary literature review method, drawing on peer-reviewed journal articles from Google Scholar, SAGE, and Cambridge Core, focusing on publications from 2000 onward. The paper reviewed both the advantages and disadvantages of shrimp cultivation in Bangladesh.'
+    },
+    {
+      keys: ['economic','export','revenue','money','income','gdp','second largest','garment'],
+      answer: 'Shrimp is Bangladesh\'s second largest export earner after garments, generating over $445 million annually. By 2014, aquaculture had expanded to 244,000 hectares (up from 20,000 ha in 1980), employing over 2 million people with a productivity of 348 kg/ha. Shrimp farming is seen as profitable — especially for rich farmers and the government — in the short run.'
+    },
+    {
+      keys: ['how much area','hectare','expansion','grow','scale','size'],
+      answer: 'Shrimp aquaculture in Bangladesh grew from roughly 20,000 hectares in 1980 to 244,000 hectares by 2014 — more than a 12-fold expansion. Total output reached 75,274 metric tons in 2014–15, covering 216,468 ha under formal aquaculture.'
+    },
+    {
+      keys: ['salt intrusion','salinity','saline','crop loss','crop extinction','crops affected'],
+      answer: 'Shrimp ponds release saline water into neighboring farmland, causing crop loss. The paper documents extinction risk percentages for local crops: mango 12%, blackberry 7.4%, jujube 4.6%, guava and banana 3.7%, spinach 6.5%, celery 5.6%, basil 2.8%, and arum 2.8%. This threatens local food security and biodiversity.'
+    },
+    {
+      keys: ['water quality','water pollution','chemical','antibiotic','feed','contamination'],
+      answer: 'Shrimp ponds use artificial feeds, antibiotics, and disinfectants that degrade water quality. Producing one metric ton of shrimp requires 50–60 million liters of water. Disease outbreaks linked to poor water management further threaten shrimp yields and surrounding ecosystems.'
+    },
+    {
+      keys: ['mangrove','sundarban','deforestation','forest','blue carbon','carbon storage'],
+      answer: 'Mangrove cover fell from 452,444 ha (1976) to 441,455 ha (2010). The Chakaria Sundarbans alone lost 8,500 acres to shrimp farms. The Sundarbans store 56 million tons of carbon valued at US$1.87 billion, with blue carbon density of 160–360 t/ha. Mangrove loss releases this stored carbon and accelerates climate change.'
+    },
+    {
+      keys: ['poor farmer','rich farmer','inequality','gender','class','land','dispossession','socioeconomic'],
+      answer: 'Shrimp cultivation has deepened class and gender inequalities. Rich farmers (high-income landowners) expanded by acquiring land from poor farmers, who were pushed into low-paid labor. Increased land salinity forces poor farmers to give up their land. Armed conflicts over land were reported in Satkhira and Khulna. As the paper notes, shrimp farming is "good for the rich and bad for the poor."'
+    },
+    {
+      keys: ['stakeholder','who benefits','winner','loser','government'],
+      answer: 'The paper identifies four stakeholders: (1) Rich farmers — short-term winners who own land and profit directly. (2) Poor farmers — losers who lose land and livelihoods. (3) Government — benefits from export revenue but will suffer long-term as investment declines. (4) International investors — initially attracted by profits, but now aware of sustainability issues and likely to withdraw. In the long run, all stakeholders lose.'
+    },
+    {
+      keys: ['policy','regulation','fish act','marine fisheries','law','iczm','integrated coastal'],
+      answer: 'Bangladesh has no specific shrimp farming policy. Existing laws (Fish Act 1950, Marine Fisheries Ordinance 1983) are not designed for shrimp supervision. The paper recommends implementing Integrated Coastal Zone Management (ICZM), which would create a dedicated legal framework, establish a single oversight agency, and include community-based monitoring to involve local farmers and people.'
+    },
+    {
+      keys: ['iczm','integrated coastal zone','coastal management'],
+      answer: 'ICZM (Integrated Coastal Zone Management) is the paper\'s primary policy recommendation. It involves three types of integration: (1) Policy integration — a separate legal framework for shrimp farming; (2) Functional integration — a single agency overseeing all shrimp activities; (3) System integration — bringing all stakeholders, including local communities, into the management process. ICZM would create sustainability while protecting poor farmers.'
+    },
+    {
+      keys: ['sustainable','solution','fix','how to solve','recommendation','rain harvest','mangrove restoration'],
+      answer: 'The paper proposes four sustainable pathways: (1) ICZM implementation for better governance; (2) Rain harvesting projects to provide clean water and reduce salt intrusion; (3) Mangrove restoration projects to restore deforested areas; (4) Saline-tolerant crop varieties (HYV rice) and the introduction of Penaeus Vannamei (Pacific white shrimp) as a more adaptable species.'
+    },
+    {
+      keys: ['penaeus vannamei','white shrimp','new species','pacific shrimp'],
+      answer: 'Penaeus Vannamei (Pacific white shrimp) is suggested as a solution for farms that have become too saline for regular crops. It grows quickly, tolerates high stocking density, requires less dietary protein, and handles a wide range of salinity and temperatures. It has been successfully cultivated commercially in India since 2009 using CIFE technology. The paper suggests Bangladesh could introduce this species.'
+    },
+    {
+      keys: ['adaptation','maladaptation','climate change','conclusion','answer','verdict'],
+      answer: 'The paper concludes that shrimp cultivation began as a short-term adaptation to salt intrusion and climate change, but has become a maladaptation. Its rapid, unregulated expansion has caused biological imbalance, environmental contamination, loss of food-crop diversity, deepened social inequalities, and increased carbon emissions from mangrove destruction. It is currently profitable ("a success") but is not sustainable and will harm all stakeholders in the long run.'
+    },
+    {
+      keys: ['cost benefit','profit','loss','is it worth','financial'],
+      answer: 'The paper\'s cost-benefit analysis finds shrimp cultivation is currently a success financially, but the question is "how long?" Rich farmers and the government gain in the short run. However, as international investors learn about the sustainability problems and withdraw, export earnings will fall and Bangladesh will lose its competitive edge to countries with sustainable shrimp production. Poor farmers see no benefit at any point.'
+    },
+    {
+      keys: ['recommendation for policymaker','what should government','policy change','future policy'],
+      answer: 'The paper recommends policymakers: register all shrimp farms for monitoring; carefully screen farm inputs to avoid environmental harm; apply standard aquaculture health and post-harvest practices; diversify into brackish-water species like mangrove crab; introduce Penaeus Vannamei; implement ICZM; launch mangrove restoration projects; and support production of saline-tolerant and drought-tolerant crop seeds.'
+    },
+    {
+      keys: ['future research','open question','what next','ongoing','new invention','new policy'],
+      answer: 'Key questions for the future include: Has Bangladesh adopted ICZM since 2021? Has Penaeus Vannamei been introduced commercially? Are mangrove restoration projects underway in the Sundarbans? Have HYV crop varieties reduced food insecurity in coastal zones? Has international investment in Bangladesh shrimp actually declined? These questions reflect that the situation may have evolved since this paper was written in Fall 2021.'
+    },
+    {
+      keys: ['reference','citation','source','bibliography','who wrote','author cited'],
+      answer: 'The paper draws on 11 peer-reviewed sources including: Abdullah et al. (2017) on livelihood impacts; Afroz & Alam (2013) on ICZM; Ahmed et al. (2017) on blue carbon and mangroves; Akter & Ahmed (2021) on farming adaptation; Prodhan et al. (2019) on crop loss; Hasan et al. (2020) on salinity; and Lakra et al. (2014) on Penaeus Vannamei.'
+    },
+    {
+      keys: ['who wrote this','author','nahian','written by','your paper'],
+      answer: 'This paper was written by Nahian Ibnat as a review paper for ENVS4004: Global Climate Change (Fall 2021) at Asian University for Women. Nahian\'s academic background is in Economics (Major), with a Minor in Environmental Science and Mathematics.'
+    },
+    {
+      keys: ['read the paper','full paper','pdf','download','link'],
+      answer: 'You can read the full paper on GitHub: <a href="https://github.com/NahianIbnat-2000/ReviewPaper/blob/master/Review%20Paper_Shrimp%20Cultivation.pdf" target="_blank">Review Paper on Shrimp Cultivation (PDF)</a>'
+    }
+  ];
+
+  const SUGGESTIONS = [
+    'Is shrimp farming adaptation or maladaptation?',
+    'What are the economic benefits?',
+    'How did mangroves get affected?',
+    'Who wins and who loses?',
+    'What are the sustainable solutions?'
+  ];
+
+  // ── DOM refs ───────────────────────────────────────────────────
+  const fab   = document.getElementById('chat-fab');
+  const panel = document.getElementById('chat-panel');
+  const msgs  = document.getElementById('chat-messages');
+  const input = document.getElementById('chat-input');
+  const send  = document.getElementById('chat-send');
+  const close = document.getElementById('chat-close-btn');
+
+  // ── Open / close ──────────────────────────────────────────────
+  let opened = false;
+  fab.addEventListener('click', () => {
+    panel.classList.add('open');
+    fab.style.display = 'none';
+    if (!opened) { opened = true; greet(); }
+    input.focus();
+  });
+  close.addEventListener('click', () => {
+    panel.classList.remove('open');
+    fab.style.display = '';
+  });
+
+  // ── Greeting ──────────────────────────────────────────────────
+  function greet() {
+    addBot('Hi! I can answer questions about this review paper on shrimp cultivation in Bangladesh. Try one of these or type your own question:');
+    addSuggestions(SUGGESTIONS);
+  }
+
+  // ── Message rendering ─────────────────────────────────────────
+  function addMsg(text, cls) {
+    const div = document.createElement('div');
+    div.className = 'msg ' + cls;
+    div.innerHTML = text;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return div;
+  }
+  function addBot(text) { return addMsg(text, 'bot'); }
+  function addUser(text) { return addMsg(escHtml(text), 'user'); }
+
+  function addSuggestions(list) {
+    const wrap = document.createElement('div');
+    wrap.className = 'suggestions';
+    list.forEach(s => {
+      const b = document.createElement('button');
+      b.className = 'sug-btn';
+      b.textContent = s;
+      b.addEventListener('click', () => { handleQuery(s); });
+      wrap.appendChild(b);
+    });
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function escHtml(t) {
+    return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // ── Query matching ────────────────────────────────────────────
+  function findAnswer(query) {
+    const q = query.toLowerCase();
+    let best = null, bestScore = 0;
+    KB.forEach(entry => {
+      const score = entry.keys.reduce((acc, k) => {
+        if (q.includes(k)) return acc + k.length;
+        // partial word match
+        const words = k.split(' ');
+        const partial = words.filter(w => w.length > 3 && q.includes(w)).length;
+        return acc + partial * 2;
+      }, 0);
+      if (score > bestScore) { bestScore = score; best = entry; }
+    });
+    return bestScore > 0 ? best.answer : null;
+  }
+
+  function handleQuery(q) {
+    if (!q.trim()) return;
+    addUser(q);
+    input.value = '';
+    // Remove old suggestion chips
+    msgs.querySelectorAll('.suggestions').forEach(s => s.remove());
+
+    const answer = findAnswer(q);
+    if (answer) {
+      addBot(answer);
+    } else {
+      addBot('I don\'t have a specific answer for that, but the paper covers: economic benefits, salt intrusion, mangrove loss, water quality, socioeconomic impacts, stakeholder analysis, ICZM policy, and sustainable solutions. Try rephrasing or ask about one of these topics!');
+    }
+    // Follow-up suggestions
+    setTimeout(() => {
+      addSuggestions(['What are the sustainable solutions?', 'Who wins and who loses?', 'Read the full paper']);
+    }, 400);
+  }
+
+  // ── Send events ───────────────────────────────────────────────
+  send.addEventListener('click', () => handleQuery(input.value));
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') handleQuery(input.value); });
+})();
+</script>
 </body>
 </html>
+
+</body></html>
